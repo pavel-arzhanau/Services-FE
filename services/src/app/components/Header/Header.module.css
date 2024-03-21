@@ -1,0 +1,9 @@
+.header {
+  display: flex;
+  align-items: center;
+}
+.list {
+  display: flex;
+  list-style: none;
+  gap: 5px;
+}

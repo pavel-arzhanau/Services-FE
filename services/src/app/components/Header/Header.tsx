@@ -34,26 +34,38 @@ export default function Header({ isChecked, setIsChecked }: HeaderProps) {
     }
   }, []);
 
+  const menuItems = [
+    {
+      path: "/",
+      title: t("header.nav.home"),
+    },
+    {
+      path: "/tasks",
+      title: t("header.nav.tasks"),
+    },
+    {
+      path: "/favorites",
+      title: t("header.nav.favorites"),
+    },
+    {
+      path: "/about",
+      title: t("header.nav.about"),
+    },
+  ];
+
   return (
     <header className={styles.header}>
       <Image src="/logo.png" alt="logo" width={150} height={75} />
       <nav>
         <ul className={styles.list}>
-          <li>
-            <a href="/">{t("header.nav.home")}</a>
-          </li>
-          <li>
-            <a href="/tasks">{t("header.nav.tasks")}</a>
-          </li>
-          <li>
-            <a href="/favorites">{t("header.nav.favorites")}</a>
-          </li>
-          <li>
-            <a href="/about">{t("header.nav.about")}</a>
-          </li>
+          {menuItems.map((item) => (
+            <li key={item.path}>
+              <a href={item.path}>{item.title}</a>
+            </li>
+          ))}
         </ul>
       </nav>
-      <div>
+      <div className={styles.languageBlock}>
         <LanguageIcon />
         <select
           ref={selectRef}

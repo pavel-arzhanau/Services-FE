@@ -6,6 +6,6 @@ interface LanguageState {
 }
 
 export const useLanguageStore = create<LanguageState>()((set, get) => ({
-  language: localStorage.getItem("language") || "ru",
+  language: "ru",
   setLanguage: (language: string) => set({ language }),
 }));

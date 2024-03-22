@@ -2,9 +2,20 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0 20px;
+  background-color: #0076ff;
+  color: #fff
 }
 .list {
   display: flex;
   list-style: none;
   gap: 5px;
+}
+.list a {
+  text-transform: capitalize;
+}
+.languageBlock {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }

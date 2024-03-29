@@ -1,19 +1,15 @@
 import Header from "../Header/Header";
+import { supportedLanguages } from "@/types";
 
 interface MainLayoutProps {
   children: React.ReactNode;
-  isChecked?: boolean;
-  setIsChecked?: React.Dispatch<React.SetStateAction<boolean>>;
+  lang: supportedLanguages;
 }
 
-export default function MainLayout({
-  isChecked,
-  setIsChecked,
-  children,
-}: MainLayoutProps) {
+export default function MainLayout({ lang, children }: MainLayoutProps) {
   return (
     <>
-      <Header isChecked={isChecked} setIsChecked={setIsChecked} />
+      <Header lang={lang} />
       {children}
     </>
   );

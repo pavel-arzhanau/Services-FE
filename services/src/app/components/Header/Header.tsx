@@ -1,55 +1,34 @@
-"use client";
-
 import Image from "next/image";
 import styles from "./Header.module.css";
 import Avatar from "@mui/material/Avatar";
 import LanguageIcon from "@mui/icons-material/Language";
-import { useLanguageStore } from "@/app/stores/languageStore";
-import { useEffect, useRef } from "react";
-import { useI18n } from "../../../../locales/client";
+import { getDictionary } from "@/app/utils/getDictionary";
+import LanguageSwitcher from "./LanguageSwitcher";
+import CustomLink from "./CustomLink";
+import { supportedLanguages } from "@/types";
 
-interface HeaderProps {
-  isChecked?: boolean;
-  setIsChecked?: React.Dispatch<React.SetStateAction<boolean>>;
-}
+type Props = {
+  lang: supportedLanguages;
+};
 
-export default function Header({ isChecked, setIsChecked }: HeaderProps) {
-  const { setLanguage } = useLanguageStore((state) => ({
-    setLanguage: state.setLanguage,
-  }));
-
-  const t = useI18n();
-
-  const selectRef = useRef<HTMLSelectElement>(null);
-
-  const changeLanguage = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setLanguage(e.target.value);
-    localStorage.setItem("language", e.target.value);
-  };
-
-  useEffect(() => {
-    if (selectRef.current) {
-      selectRef.current.value = localStorage.getItem("language") || "ru";
-      setLanguage(selectRef.current.value);
-    }
-  }, []);
-
+export default async function Header({ lang }: Props) {
+  const dictionary = await getDictionary(lang);
   const menuItems = [
     {
-      path: "/",
-      title: t("header.nav.home"),
+      path: `/`,
+      title: dictionary.header.nav.home,
     },
     {
-      path: "/tasks",
-      title: t("header.nav.tasks"),
+      path: `/tasks`,
+      title: dictionary.header.nav.tasks,
     },
     {
-      path: "/favorites",
-      title: t("header.nav.favorites"),
+      path: `/favorites`,
+      title: dictionary.header.nav.favorites,
     },
     {
-      path: "/about",
-      title: t("header.nav.about"),
+      path: `/about`,
+      title: dictionary.header.nav.about,
     },
   ];
 
@@ -60,22 +39,18 @@ export default function Header({ isChecked, setIsChecked }: HeaderProps) {
         <ul className={styles.list}>
           {menuItems.map((item) => (
             <li key={item.path}>
-              <a href={item.path}>{item.title}</a>
+              <li>
+                <CustomLink href={item.path} lang={lang}>
+                  {item.title}
+                </CustomLink>
+              </li>
             </li>
           ))}
         </ul>
       </nav>
       <div className={styles.languageBlock}>
         <LanguageIcon />
-        <select
-          ref={selectRef}
-          onChange={changeLanguage}
-          name="language"
-          id="language-select"
-        >
-          <option value="ru">Русский</option>
-          <option value="by">Белорусский</option>
-        </select>
+        <LanguageSwitcher lang={lang} />
       </div>
       <Avatar src="/broken-image.jpg" />
     </header>

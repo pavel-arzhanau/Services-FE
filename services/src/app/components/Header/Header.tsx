@@ -1,13 +1,17 @@
 import Image from "next/image";
-import Link from "next/link";
 import styles from "./Header.module.css";
 import Avatar from "@mui/material/Avatar";
 import LanguageIcon from "@mui/icons-material/Language";
 import { getDictionary } from "@/app/utils/getDictionary";
 import LanguageSwitcher from "./LanguageSwitcher";
 import CustomLink from "./CustomLink";
+import { supportedLanguages } from "@/types";
 
-export default async function Header({ lang }: { lang: "ru" | "by" }) {
+type Props = {
+  lang: supportedLanguages;
+};
+
+export default async function Header({ lang }: Props) {
   const dictionary = await getDictionary(lang);
   const menuItems = [
     {

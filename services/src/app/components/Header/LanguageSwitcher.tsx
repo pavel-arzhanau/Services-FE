@@ -4,14 +4,19 @@ import { ChangeEvent, useEffect, useRef } from "react";
 import { i18n } from "@/i18n-config";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
+import { supportedLanguages } from "@/types";
 
-export default function LanguageSwitcher({ lang }: { lang: "ru" | "by" }) {
+type Props = {
+  lang: supportedLanguages;
+};
+
+export default function LanguageSwitcher({ lang }: Props) {
   const selectRef = useRef(null);
   const pathName = usePathname();
   const router = useRouter();
 
   const change = (event: ChangeEvent<HTMLSelectElement>) => {
-    const path = redirectedPathName(event.target.value as "ru" | "by");
+    const path = redirectedPathName(event.target.value as supportedLanguages);
     router.push(path);
   };
 

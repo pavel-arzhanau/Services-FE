@@ -1,9 +1,10 @@
 import MainLayout from "../components/MainLayout/MainLayout";
 import { getDictionary } from "../utils/getDictionary";
+import { supportedLanguages } from "@/types";
 
 type Props = {
   params: {
-    lang: "ru" | "by";
+    lang: supportedLanguages;
   };
 };
 

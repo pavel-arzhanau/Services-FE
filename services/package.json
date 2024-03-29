@@ -11,10 +11,12 @@
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.0",
+    "@formatjs/intl-localematcher": "^0.5.4",
     "@mui/icons-material": "^5.15.14",
     "@mui/material": "^5.15.14",
+    "@types/negotiator": "^0.6.3",
+    "negotiator": "^0.6.3",
     "next": "14.1.4",
-    "next-international": "^1.2.4",
     "react": "^18",
     "react-dom": "^18",
     "zustand": "^4.5.2"

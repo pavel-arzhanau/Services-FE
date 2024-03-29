@@ -1,55 +1,26 @@
-"use client";
-
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./Header.module.css";
 import Avatar from "@mui/material/Avatar";
 import LanguageIcon from "@mui/icons-material/Language";
-import { useLanguageStore } from "@/app/stores/languageStore";
-import { useEffect, useRef } from "react";
-import { useI18n } from "../../../../locales/client";
 
-interface HeaderProps {
-  isChecked?: boolean;
-  setIsChecked?: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-export default function Header({ isChecked, setIsChecked }: HeaderProps) {
-  const { setLanguage } = useLanguageStore((state) => ({
-    setLanguage: state.setLanguage,
-  }));
-
-  const t = useI18n();
-
-  const selectRef = useRef<HTMLSelectElement>(null);
-
-  const changeLanguage = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setLanguage(e.target.value);
-    localStorage.setItem("language", e.target.value);
-  };
-
-  useEffect(() => {
-    if (selectRef.current) {
-      selectRef.current.value = localStorage.getItem("language") || "ru";
-      setLanguage(selectRef.current.value);
-    }
-  }, []);
-
+export default function Header() {
   const menuItems = [
     {
       path: "/",
-      title: t("header.nav.home"),
+      title: "header.nav.home",
     },
     {
       path: "/tasks",
-      title: t("header.nav.tasks"),
+      title: "header.nav.tasks",
     },
     {
       path: "/favorites",
-      title: t("header.nav.favorites"),
+      title: "header.nav.favorites",
     },
     {
       path: "/about",
-      title: t("header.nav.about"),
+      title: "header.nav.about",
     },
   ];
 
@@ -60,19 +31,14 @@ export default function Header({ isChecked, setIsChecked }: HeaderProps) {
         <ul className={styles.list}>
           {menuItems.map((item) => (
             <li key={item.path}>
-              <a href={item.path}>{item.title}</a>
+              <Link href={item.path}>{item.title}</Link>
             </li>
           ))}
         </ul>
       </nav>
       <div className={styles.languageBlock}>
         <LanguageIcon />
-        <select
-          ref={selectRef}
-          onChange={changeLanguage}
-          name="language"
-          id="language-select"
-        >
+        <select name="language" id="language-select">
           <option value="ru">Русский</option>
           <option value="by">Белорусский</option>
         </select>

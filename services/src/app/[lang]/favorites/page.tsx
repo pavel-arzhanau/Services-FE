@@ -1,8 +1,13 @@
 import MainLayout from "../../components/MainLayout/MainLayout";
 
-export default function FavoritesPage() {
+type Props = {
+  params: {
+    lang: "ru" | "by";
+  };
+};
+export default function FavoritesPage({ params: { lang } }: Props) {
   return (
-    <MainLayout>
+    <MainLayout lang={lang}>
       <main>favorites page</main>
     </MainLayout>
   );

@@ -3,24 +3,28 @@ import Link from "next/link";
 import styles from "./Header.module.css";
 import Avatar from "@mui/material/Avatar";
 import LanguageIcon from "@mui/icons-material/Language";
+import { getDictionary } from "@/app/utils/getDictionary";
+import LanguageSwitcher from "./LanguageSwitcher";
+import CustomLink from "./CustomLink";
 
-export default function Header() {
+export default async function Header({ lang }: { lang: "ru" | "by" }) {
+  const dictionary = await getDictionary(lang);
   const menuItems = [
     {
-      path: "/",
-      title: "header.nav.home",
+      path: `/`,
+      title: dictionary.header.nav.home,
     },
     {
-      path: "/tasks",
-      title: "header.nav.tasks",
+      path: `/tasks`,
+      title: dictionary.header.nav.tasks,
     },
     {
-      path: "/favorites",
-      title: "header.nav.favorites",
+      path: `/favorites`,
+      title: dictionary.header.nav.favorites,
     },
     {
-      path: "/about",
-      title: "header.nav.about",
+      path: `/about`,
+      title: dictionary.header.nav.about,
     },
   ];
 
@@ -31,17 +35,18 @@ export default function Header() {
         <ul className={styles.list}>
           {menuItems.map((item) => (
             <li key={item.path}>
-              <Link href={item.path}>{item.title}</Link>
+              <li>
+                <CustomLink href={item.path} lang={lang}>
+                  {item.title}
+                </CustomLink>
+              </li>
             </li>
           ))}
         </ul>
       </nav>
       <div className={styles.languageBlock}>
         <LanguageIcon />
-        <select name="language" id="language-select">
-          <option value="ru">Русский</option>
-          <option value="by">Белорусский</option>
-        </select>
+        <LanguageSwitcher lang={lang} />
       </div>
       <Avatar src="/broken-image.jpg" />
     </header>

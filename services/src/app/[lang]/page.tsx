@@ -11,7 +11,7 @@ export default async function Home({ params: { lang } }: Props) {
   const dictionary = await getDictionary(lang);
 
   return (
-    <MainLayout>
+    <MainLayout lang={lang}>
       <main>{dictionary.header.nav.home}</main>
     </MainLayout>
   );

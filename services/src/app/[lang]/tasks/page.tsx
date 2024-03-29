@@ -1,8 +1,14 @@
 import MainLayout from "../../components/MainLayout/MainLayout";
 
-export default function TasksPage() {
+type Props = {
+  params: {
+    lang: "ru" | "by";
+  };
+};
+
+export default function TasksPage({ params: { lang } }: Props) {
   return (
-    <MainLayout>
+    <MainLayout lang={lang}>
       <main>tasks page</main>
     </MainLayout>
   );

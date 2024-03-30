@@ -3,6 +3,8 @@ import { supportedLanguages } from "@/types";
 import styles from "./login.module.css";
 import { useEffect, useState } from "react";
 import { getDictionaryInClientComponent } from "@/app/utils/getDictionaryInClientComponent";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { useRouter } from "next/navigation";
 
 type Props = {
   params: {
@@ -13,6 +15,7 @@ type Props = {
 export default function LoginDesktop({ params: { lang } }: Props) {
   const [isContainerActive, setIsContainerActive] = useState(false);
   const dictionary = getDictionaryInClientComponent(lang);
+  const router = useRouter();
 
   useEffect(() => {
     const registerBtn = document.getElementById("register") as HTMLElement;
@@ -45,6 +48,16 @@ export default function LoginDesktop({ params: { lang } }: Props) {
         }`}
         id="container"
       >
+        <ArrowBackIcon
+          sx={{
+            position: "absolute",
+            zIndex: 15,
+            top: "20px",
+            left: "20px",
+            cursor: "pointer",
+          }}
+          onClick={router.back}
+        />
         <div className={`${styles.formContainer} ${styles.signUp}`}>
           <form>
             <h1>{dictionary.login.createAccount}</h1>

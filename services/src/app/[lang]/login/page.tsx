@@ -1,7 +1,7 @@
 "use client";
 import { supportedLanguages } from "@/types";
 import styles from "./login.module.css";
-import { useEffect, useState } from "react";
+import useLoginContainerActive from "./hooks/useLoginContainerActive";
 import { getDictionaryInClientComponent } from "@/app/utils/getDictionaryInClientComponent";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useRouter } from "next/navigation";
@@ -14,9 +14,9 @@ type Props = {
 };
 
 export default function LoginDesktop({ params: { lang } }: Props) {
-  const [isContainerActive, setIsContainerActive] = useState(false);
   const dictionary = getDictionaryInClientComponent(lang);
   const router = useRouter();
+  const isContainerActive = useLoginContainerActive();
 
   const signUp = () => {
     // TODO now it sends mock data
@@ -32,29 +32,6 @@ export default function LoginDesktop({ params: { lang } }: Props) {
       }),
     });
   };
-
-  useEffect(() => {
-    const registerBtn = document.getElementById("register") as HTMLElement;
-    const loginBtn = document.getElementById("login") as HTMLElement;
-
-    const addActiveClass = () => {
-      setIsContainerActive(true);
-    };
-
-    const removeActiveClass = () => {
-      setIsContainerActive(false);
-    };
-
-    registerBtn.addEventListener("click", addActiveClass);
-
-    loginBtn.addEventListener("click", removeActiveClass);
-
-    return () => {
-      registerBtn?.removeEventListener("click", addActiveClass);
-
-      loginBtn?.removeEventListener("click", removeActiveClass);
-    };
-  }, []);
 
   return (
     <>

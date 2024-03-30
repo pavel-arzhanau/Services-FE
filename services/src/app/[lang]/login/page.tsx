@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { getDictionaryInClientComponent } from "@/app/utils/getDictionaryInClientComponent";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useRouter } from "next/navigation";
+import { CONFIG } from "../../constants";
 
 type Props = {
   params: {
@@ -16,6 +17,21 @@ export default function LoginDesktop({ params: { lang } }: Props) {
   const [isContainerActive, setIsContainerActive] = useState(false);
   const dictionary = getDictionaryInClientComponent(lang);
   const router = useRouter();
+
+  const signUp = () => {
+    // TODO now it sends mock data
+    fetch(`${CONFIG.API_BASE_URL}/auth/registration`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: "test2",
+        password: "11231",
+        phone: "112311233",
+      }),
+    });
+  };
 
   useEffect(() => {
     const registerBtn = document.getElementById("register") as HTMLElement;
@@ -59,12 +75,12 @@ export default function LoginDesktop({ params: { lang } }: Props) {
           onClick={router.back}
         />
         <div className={`${styles.formContainer} ${styles.signUp}`}>
-          <form>
+          <form onClick={(e) => e.preventDefault()}>
             <h1>{dictionary.login.createAccount}</h1>
             <input type="text" placeholder={dictionary.login.name} />
             <input type="test" placeholder={dictionary.login.phone} />
             <input type="password" placeholder={dictionary.login.password} />
-            <button>{dictionary.login.signUp}</button>
+            <button onClick={signUp}>{dictionary.login.signUp}</button>
           </form>
         </div>
         <div className={`${styles.formContainer} ${styles.signIn}`}>

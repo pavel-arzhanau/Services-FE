@@ -53,7 +53,7 @@ export default async function Header({ lang }: Props) {
         <LanguageSwitcher lang={lang} />
       </div>
       <CustomLink href="/login" lang={lang}>
-        <Avatar src="/broken-image.jpg" />
+        <Avatar />
       </CustomLink>
     </header>
   );

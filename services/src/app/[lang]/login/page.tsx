@@ -1,11 +1,12 @@
 "use client";
 import { supportedLanguages } from "@/types";
 import styles from "./login.module.css";
-import { useEffect, useState } from "react";
+import useLoginContainerActive from "./hooks/useLoginContainerActive";
 import { getDictionaryInClientComponent } from "@/app/utils/getDictionaryInClientComponent";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useRouter } from "next/navigation";
-import { CONFIG } from "../../constants";
+import LoginForm from "./components/LoginForm";
+import SignUpForm from "./components/SignUpForm";
 
 type Props = {
   params: {
@@ -14,47 +15,9 @@ type Props = {
 };
 
 export default function LoginDesktop({ params: { lang } }: Props) {
-  const [isContainerActive, setIsContainerActive] = useState(false);
   const dictionary = getDictionaryInClientComponent(lang);
   const router = useRouter();
-
-  const signUp = () => {
-    // TODO now it sends mock data
-    fetch(`${CONFIG.API_BASE_URL}/auth/registration`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: "test2",
-        password: "11231",
-        phone: "112311233",
-      }),
-    });
-  };
-
-  useEffect(() => {
-    const registerBtn = document.getElementById("register") as HTMLElement;
-    const loginBtn = document.getElementById("login") as HTMLElement;
-
-    const addActiveClass = () => {
-      setIsContainerActive(true);
-    };
-
-    const removeActiveClass = () => {
-      setIsContainerActive(false);
-    };
-
-    registerBtn.addEventListener("click", addActiveClass);
-
-    loginBtn.addEventListener("click", removeActiveClass);
-
-    return () => {
-      registerBtn?.removeEventListener("click", addActiveClass);
-
-      loginBtn?.removeEventListener("click", removeActiveClass);
-    };
-  }, []);
+  const isContainerActive = useLoginContainerActive();
 
   return (
     <>
@@ -75,21 +38,10 @@ export default function LoginDesktop({ params: { lang } }: Props) {
           onClick={router.back}
         />
         <div className={`${styles.formContainer} ${styles.signUp}`}>
-          <form onClick={(e) => e.preventDefault()}>
-            <h1>{dictionary.login.createAccount}</h1>
-            <input type="text" placeholder={dictionary.login.name} />
-            <input type="test" placeholder={dictionary.login.phone} />
-            <input type="password" placeholder={dictionary.login.password} />
-            <button onClick={signUp}>{dictionary.login.signUp}</button>
-          </form>
+          <SignUpForm lang={lang} />
         </div>
         <div className={`${styles.formContainer} ${styles.signIn}`}>
-          <form>
-            <h1>{dictionary.login.signIn}</h1>
-            <input type="text" placeholder={dictionary.login.phone} />
-            <input type="password" placeholder={dictionary.login.password} />
-            <button>{dictionary.login.signIn}</button>
-          </form>
+          <LoginForm lang={lang} />
         </div>
         <div className={styles.toggleContainer}>
           <div className={styles.toggle}>

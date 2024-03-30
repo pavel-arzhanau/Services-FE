@@ -5,7 +5,8 @@ import useLoginContainerActive from "./hooks/useLoginContainerActive";
 import { getDictionaryInClientComponent } from "@/app/utils/getDictionaryInClientComponent";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useRouter } from "next/navigation";
-import { CONFIG } from "../../constants";
+import LoginForm from "./components/LoginForm";
+import SignUpForm from "./components/SignUpForm";
 
 type Props = {
   params: {
@@ -17,21 +18,6 @@ export default function LoginDesktop({ params: { lang } }: Props) {
   const dictionary = getDictionaryInClientComponent(lang);
   const router = useRouter();
   const isContainerActive = useLoginContainerActive();
-
-  const signUp = () => {
-    // TODO now it sends mock data
-    fetch(`${CONFIG.API_BASE_URL}/auth/registration`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: "test2",
-        password: "11231",
-        phone: "112311233",
-      }),
-    });
-  };
 
   return (
     <>
@@ -52,21 +38,10 @@ export default function LoginDesktop({ params: { lang } }: Props) {
           onClick={router.back}
         />
         <div className={`${styles.formContainer} ${styles.signUp}`}>
-          <form onClick={(e) => e.preventDefault()}>
-            <h1>{dictionary.login.createAccount}</h1>
-            <input type="text" placeholder={dictionary.login.name} />
-            <input type="test" placeholder={dictionary.login.phone} />
-            <input type="password" placeholder={dictionary.login.password} />
-            <button onClick={signUp}>{dictionary.login.signUp}</button>
-          </form>
+          <SignUpForm lang={lang} />
         </div>
         <div className={`${styles.formContainer} ${styles.signIn}`}>
-          <form>
-            <h1>{dictionary.login.signIn}</h1>
-            <input type="text" placeholder={dictionary.login.phone} />
-            <input type="password" placeholder={dictionary.login.password} />
-            <button>{dictionary.login.signIn}</button>
-          </form>
+          <LoginForm lang={lang} />
         </div>
         <div className={styles.toggleContainer}>
           <div className={styles.toggle}>

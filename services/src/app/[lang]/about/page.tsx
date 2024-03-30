@@ -1,5 +1,10 @@
 import MainLayout from "../../components/MainLayout/MainLayout";
 import { supportedLanguages } from "@/types";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About | Services App",
+};
 
 type Props = {
   params: {

@@ -15,6 +15,7 @@
     "@mui/icons-material": "^5.15.14",
     "@mui/material": "^5.15.14",
     "@types/negotiator": "^0.6.3",
+    "axios": "^1.6.8",
     "negotiator": "^0.6.3",
     "next": "14.1.4",
     "react": "^18",

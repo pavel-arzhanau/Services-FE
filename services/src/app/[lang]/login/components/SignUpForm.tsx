@@ -1,9 +1,9 @@
 import { supportedLanguages } from "@/types";
 import { getDictionaryInClientComponent } from "@/app/utils/getDictionaryInClientComponent";
-import { CONFIG } from "../../../constants";
 import PhoneInput from "react-phone-number-input/react-hook-form-input";
 import { useForm } from "react-hook-form";
 import styles from "../login.module.css";
+import { useUserStore } from "@/app/stores/userStore";
 
 type Props = {
   lang: supportedLanguages;
@@ -17,6 +17,7 @@ type Inputs = {
 
 export default function SignUpForm({ lang }: Props) {
   const dictionary = getDictionaryInClientComponent(lang);
+  const registration = useUserStore(state => state.registration)
 
   const {
     control,
@@ -26,17 +27,7 @@ export default function SignUpForm({ lang }: Props) {
   } = useForm<Inputs>();
 
   const signUp = (data: Inputs) => {
-    fetch(`${CONFIG.API_BASE_URL}/auth/registration`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: data.name,
-        password: data.password,
-        phone: data.phone,
-      }),
-    });
+    registration(data.phone, data.password, data.name)
   };
 
   return (

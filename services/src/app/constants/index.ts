@@ -3,7 +3,3 @@ export const COLORS = {
   secondary: "#fff",
   tertiary: "#ff7f00",
 };
-
-export const CONFIG = {
-  API_BASE_URL: "http://localhost:4000",
-};

@@ -3,6 +3,7 @@ import { getDictionaryInClientComponent } from "@/app/utils/getDictionaryInClien
 import PhoneInput from "react-phone-number-input/react-hook-form-input";
 import { useForm } from "react-hook-form";
 import styles from "../login.module.css";
+import { useUserStore } from "@/app/stores/userStore";
 
 type Props = {
   lang: supportedLanguages;
@@ -15,6 +16,7 @@ type Inputs = {
 
 export default function LoginForm({ lang }: Props) {
   const dictionary = getDictionaryInClientComponent(lang);
+  const login = useUserStore((state) => state.login);
 
   const {
     control,
@@ -24,7 +26,7 @@ export default function LoginForm({ lang }: Props) {
   } = useForm<Inputs>();
 
   const signIn = (data: Inputs) => {
-    // TODO login API
+    login(data.phone, data.password);
   };
 
   return (

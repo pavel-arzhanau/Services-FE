@@ -6,6 +6,7 @@ import styles from "../login.module.css";
 
 type Props = {
   lang: supportedLanguages;
+  login: (phone: string, password: string) => Promise<void>;
 };
 
 type Inputs = {
@@ -13,7 +14,7 @@ type Inputs = {
   password: string;
 };
 
-export default function LoginForm({ lang }: Props) {
+export default function LoginForm({ lang, login }: Props) {
   const dictionary = getDictionaryInClientComponent(lang);
 
   const {
@@ -23,8 +24,8 @@ export default function LoginForm({ lang }: Props) {
     formState: { errors },
   } = useForm<Inputs>();
 
-  const signIn = (data: Inputs) => {
-    // TODO login API
+  const signIn = async (data: Inputs) => {
+    login(data.phone, data.password);
   };
 
   return (

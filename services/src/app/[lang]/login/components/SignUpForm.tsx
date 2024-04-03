@@ -3,10 +3,14 @@ import { getDictionaryInClientComponent } from "@/app/utils/getDictionaryInClien
 import PhoneInput from "react-phone-number-input/react-hook-form-input";
 import { useForm } from "react-hook-form";
 import styles from "../login.module.css";
-import { useUserStore } from "@/app/stores/userStore";
 
 type Props = {
   lang: supportedLanguages;
+  registration: (
+    phone: string,
+    password: string,
+    name: string
+  ) => Promise<void>;
 };
 
 type Inputs = {
@@ -15,9 +19,8 @@ type Inputs = {
   password: string;
 };
 
-export default function SignUpForm({ lang }: Props) {
+export default function SignUpForm({ lang, registration }: Props) {
   const dictionary = getDictionaryInClientComponent(lang);
-  const registration = useUserStore(state => state.registration)
 
   const {
     control,
@@ -27,7 +30,7 @@ export default function SignUpForm({ lang }: Props) {
   } = useForm<Inputs>();
 
   const signUp = (data: Inputs) => {
-    registration(data.phone, data.password, data.name)
+    registration(data.phone, data.password, data.name);
   };
 
   return (

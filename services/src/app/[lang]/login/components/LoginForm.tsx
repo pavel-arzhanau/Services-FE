@@ -3,10 +3,10 @@ import { getDictionaryInClientComponent } from "@/app/utils/getDictionaryInClien
 import PhoneInput from "react-phone-number-input/react-hook-form-input";
 import { useForm } from "react-hook-form";
 import styles from "../login.module.css";
-import { useUserStore } from "@/app/stores/userStore";
 
 type Props = {
   lang: supportedLanguages;
+  login: (phone: string, password: string) => Promise<void>;
 };
 
 type Inputs = {
@@ -14,9 +14,8 @@ type Inputs = {
   password: string;
 };
 
-export default function LoginForm({ lang }: Props) {
+export default function LoginForm({ lang, login }: Props) {
   const dictionary = getDictionaryInClientComponent(lang);
-  const login = useUserStore((state) => state.login);
 
   const {
     control,
@@ -25,7 +24,7 @@ export default function LoginForm({ lang }: Props) {
     formState: { errors },
   } = useForm<Inputs>();
 
-  const signIn = (data: Inputs) => {
+  const signIn = async (data: Inputs) => {
     login(data.phone, data.password);
   };
 

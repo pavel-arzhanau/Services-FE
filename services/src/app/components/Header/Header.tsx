@@ -39,11 +39,9 @@ export default async function Header({ lang }: Props) {
         <ul className={styles.list}>
           {menuItems.map((item) => (
             <li key={item.path}>
-              <li>
-                <CustomLink href={item.path} lang={lang}>
-                  {item.title}
-                </CustomLink>
-              </li>
+              <CustomLink href={item.path} lang={lang}>
+                {item.title}
+              </CustomLink>
             </li>
           ))}
         </ul>

@@ -2,6 +2,7 @@ import MainLayout from "../components/MainLayout/MainLayout";
 import { getDictionary } from "../utils/getDictionary";
 import { supportedLanguages } from "@/types";
 import type { Metadata } from "next";
+import { checkAuth } from "../actions/auth";
 
 export const metadata: Metadata = {
   title: "Services App",
@@ -16,6 +17,10 @@ type Props = {
 
 export default async function Home({ params: { lang } }: Props) {
   const dictionary = await getDictionary(lang);
+
+  // INFO: just an example of getting session info
+  const data = await checkAuth();
+  console.log(data);
 
   return (
     <MainLayout lang={lang}>

@@ -55,7 +55,7 @@ export default async function Header({ lang }: Props) {
         <LanguageSwitcher lang={lang} />
       </div>
       {auth.user && <Avatar />}
-      <LoginLogout lang={lang} logout={logout} isLogin={Boolean(auth.user)} />
+      <LoginLogout lang={lang} logout={logout} auth={auth} />
     </header>
   );
 }

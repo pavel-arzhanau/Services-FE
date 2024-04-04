@@ -6,6 +6,8 @@ import { getDictionary } from "@/app/utils/getDictionary";
 import LanguageSwitcher from "./LanguageSwitcher";
 import CustomLink from "./CustomLink";
 import { supportedLanguages } from "@/types";
+import { checkAuth, logout } from "@/app/actions/auth";
+import LoginLogout from "./LoginLogout";
 
 type Props = {
   lang: supportedLanguages;
@@ -32,6 +34,8 @@ export default async function Header({ lang }: Props) {
     },
   ];
 
+  const auth = await checkAuth();
+
   return (
     <header className={styles.header}>
       <Image src="/logo.png" alt="logo" width={150} height={75} />
@@ -50,9 +54,8 @@ export default async function Header({ lang }: Props) {
         <LanguageIcon />
         <LanguageSwitcher lang={lang} />
       </div>
-      <CustomLink href="/login" lang={lang}>
-        <Avatar />
-      </CustomLink>
+      {auth.user && <Avatar />}
+      <LoginLogout lang={lang} logout={logout} auth={auth} />
     </header>
   );
 }

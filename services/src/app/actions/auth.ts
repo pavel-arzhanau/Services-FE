@@ -39,6 +39,8 @@ async function logout(): Promise<void> {
       "Content-Type": "application/json",
     },
   });
+
+  cookies().delete("refreshToken");
 }
 async function registration(
   phone: string,

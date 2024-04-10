@@ -2,6 +2,7 @@ import MainLayout from "../components/MainLayout/MainLayout";
 import { getDictionary } from "../utils/getDictionary";
 import { supportedLanguages } from "@/types";
 import type { Metadata } from "next";
+import Categories from "./Categories";
 
 export const metadata: Metadata = {
   title: "Services App",
@@ -19,7 +20,9 @@ export default async function Home({ params: { lang } }: Props) {
 
   return (
     <MainLayout lang={lang}>
-      <main>{dictionary.header.nav.home}</main>
+      <main>
+        <Categories lang={lang} />
+      </main>
     </MainLayout>
   );
 }

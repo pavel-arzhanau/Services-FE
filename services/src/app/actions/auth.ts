@@ -3,8 +3,7 @@ import { AuthResponse } from "@/types";
 import { cookies } from "next/headers";
 import { jwtDecode } from "jwt-decode";
 import { redirect } from "next/navigation";
-
-const API_BASE_URL = "http://localhost:4000";
+import { API_BASE_URL } from "../constants";
 
 async function login(phone: string, password: string): Promise<void> {
   const response = await fetch(`${API_BASE_URL}/auth/login`, {

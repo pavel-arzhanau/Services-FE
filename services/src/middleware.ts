@@ -18,8 +18,19 @@ function getLocale(request: NextRequest): string | undefined {
   return locale;
 }
 
+const PUBLIC_FILE_PATTERN = /\.(.*)$/;
+
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
+
+  if (
+    pathname.startsWith("/flight/_next/image") || // exclude all image requests
+    pathname.startsWith("/api") || //  exclude all API routes - Perhaps not wanted?
+    pathname.startsWith("/static") || // exclude static files - Perhaps not wanted?
+    PUBLIC_FILE_PATTERN.test(pathname) // exclude all files in the public folder
+  )
+    return NextResponse.next();
+
   const pathnameIsMissingLocale = i18n.locales.every(
     (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
   );

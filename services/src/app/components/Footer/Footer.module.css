@@ -1,0 +1,25 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--color-fourth);
+  color: var(--color-text);
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  gap: 10px;
+}
+
+.list a {
+  text-transform: capitalize;
+  text-decoration: none;
+  color: var(--color-text);
+  font-weight: bold;
+}

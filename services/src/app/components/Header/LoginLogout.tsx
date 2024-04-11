@@ -1,10 +1,11 @@
 "use client";
 import LoginIcon from "@mui/icons-material/Login";
 import LogoutIcon from "@mui/icons-material/Logout";
-import CustomLink from "./CustomLink";
+import CustomLink from "../CustomLink/CustomLink";
 import { IUser, supportedLanguages } from "@/types";
 import { AuthResponse } from "@/types";
 import { useUserStore } from "@/app/stores/userStore";
+import styles from "./Header.module.css";
 
 type Props = {
   logout: () => Promise<void>;
@@ -31,9 +32,9 @@ export default function LoginLogout({ logout, auth, lang }: Props) {
   return (
     <>
       {isLogin ? (
-        <LogoutIcon sx={{ cursor: "pointer" }} onClick={logoutUser} />
+        <LogoutIcon className={styles.icon} onClick={logoutUser} />
       ) : (
-        <CustomLink href="/login" lang={lang}>
+        <CustomLink className={styles.icon} href="/login" lang={lang}>
           <LoginIcon />
         </CustomLink>
       )}

@@ -4,10 +4,11 @@ import Avatar from "@mui/material/Avatar";
 import LanguageIcon from "@mui/icons-material/Language";
 import { getDictionary } from "@/app/utils/getDictionary";
 import LanguageSwitcher from "./LanguageSwitcher";
-import CustomLink from "./CustomLink";
+import CustomLink from "../CustomLink/CustomLink";
 import { supportedLanguages } from "@/types";
 import { checkAuth, logout } from "@/app/actions/auth";
 import LoginLogout from "./LoginLogout";
+import BurgerMenu from "./BurgerMenu";
 
 type Props = {
   lang: supportedLanguages;
@@ -38,8 +39,8 @@ export default async function Header({ lang }: Props) {
 
   return (
     <header className={styles.header}>
-      <Image src="/logo.png" alt="logo" width={150} height={75} />
-      <nav>
+      <Image src="/logo.png" alt="logo" width={100} height={50} />
+      <nav className={styles.navbar}>
         <ul className={styles.list}>
           {menuItems.map((item) => (
             <li key={item.path}>
@@ -56,6 +57,7 @@ export default async function Header({ lang }: Props) {
       </div>
       {auth.user && <Avatar />}
       <LoginLogout lang={lang} logout={logout} auth={auth} />
+      <BurgerMenu menuItems={menuItems} lang={lang} />
     </header>
   );
 }

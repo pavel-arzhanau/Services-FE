@@ -3,7 +3,7 @@ import { getDictionary } from "@/app/utils/getDictionary";
 import { supportedLanguages } from "@/types";
 import { getCategories } from "../actions/categories";
 import { ICategory } from "@/types";
-import CustomLink from "../components/Header/CustomLink";
+import CustomLink from "../components/CustomLink/CustomLink";
 
 type Props = {
   lang: supportedLanguages;
@@ -19,7 +19,7 @@ export default async function Categories({ lang }: Props) {
       <ul className={styles.categories}>
         {categories.map((category: ICategory) => (
           <li key={category.id}>
-            <h2>
+            <h2 className={styles.category}>
               {
                 dictionary.home.categories[
                   category.name as keyof typeof dictionary.home.categories

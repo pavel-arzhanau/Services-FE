@@ -6,7 +6,7 @@
   color: #fff;
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 30px;
+  padding: 0 10px;
   height: 60px;
 }
 
@@ -47,6 +47,7 @@
   background-color: inherit;
   color: var(--color-fourth);
   outline: none;
+  cursor: pointer;
 }
 
 .option {
@@ -54,7 +55,8 @@
   border: none;
   outline: none;
   padding: 0;
-  color: black
+  color: black;
+  cursor: pointer;
 }
 
 .burgerButton {
@@ -66,6 +68,11 @@
   text-decoration: none;
   color: var(--color-fifth);
   font-weight: bold;
+}
+
+.icon {
+  color: var(--color-fourth);
+  cursor: pointer;
 }
 
 @media only screen and (min-width: 40em) {
@@ -81,5 +88,11 @@
     overflow: visible;
     height: auto;
     width: auto;
+  }
+}
+
+@media only screen and (min-width: 48em) {
+  .header {
+    padding: 0 30px
   }
 }

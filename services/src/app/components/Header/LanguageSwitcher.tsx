@@ -6,11 +6,11 @@ import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { supportedLanguages } from "@/types";
 import styles from "./Header.module.css";
-import { Roboto } from "next/font/google";
+import { Lato } from "next/font/google";
 
-const roboto = Roboto({
-  weight: ["400", "500", "700", "900"],
-  subsets: ["cyrillic"],
+const lato = Lato({
+  weight: ["400", "700", "900"],
+  subsets: ["latin"],
 });
 
 type Props = {
@@ -63,7 +63,7 @@ export default function LanguageSwitcher({ lang }: Props) {
     <>
       <style jsx global>{`
         html {
-          font-family: ${roboto.style.fontFamily};
+          font-family: ${lato.style.fontFamily};
         }
       `}</style>
       <select

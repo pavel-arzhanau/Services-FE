@@ -4,7 +4,7 @@ import Avatar from "@mui/material/Avatar";
 import LanguageIcon from "@mui/icons-material/Language";
 import { getDictionary } from "@/app/utils/getDictionary";
 import LanguageSwitcher from "./LanguageSwitcher";
-import CustomLink from "./CustomLink";
+import CustomLink from "../CustomLink/CustomLink";
 import { supportedLanguages } from "@/types";
 import { checkAuth, logout } from "@/app/actions/auth";
 import LoginLogout from "./LoginLogout";
@@ -39,12 +39,7 @@ export default async function Header({ lang }: Props) {
 
   return (
     <header className={styles.header}>
-      <Image
-        src="/images/logo-services.png"
-        alt="logo"
-        width={50}
-        height={25}
-      />
+      <Image src="/logo.png" alt="logo" width={100} height={50} />
       <nav className={styles.navbar}>
         <ul className={styles.list}>
           {menuItems.map((item) => (

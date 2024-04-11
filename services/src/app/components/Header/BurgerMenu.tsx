@@ -6,8 +6,9 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { IconButton } from "@mui/material";
 import styles from "./Header.module.css";
-import CustomLink from "./CustomLink";
+import CustomLink from "../CustomLink/CustomLink";
 import { supportedLanguages } from "@/types";
+import Image from "next/image";
 
 type MenuItem = {
   path: string;

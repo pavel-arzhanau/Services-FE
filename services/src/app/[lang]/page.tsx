@@ -1,5 +1,4 @@
 import MainLayout from "../components/MainLayout/MainLayout";
-import { getDictionary } from "../utils/getDictionary";
 import { supportedLanguages } from "@/types";
 import type { Metadata } from "next";
 import Categories from "./Categories";

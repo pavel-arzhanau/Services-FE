@@ -1,4 +1,5 @@
 import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 import { supportedLanguages } from "@/types";
 
 interface MainLayoutProps {
@@ -11,6 +12,7 @@ export default function MainLayout({ lang, children }: MainLayoutProps) {
     <>
       <Header lang={lang} />
       {children}
+      <Footer lang={lang} />
     </>
   );
 }

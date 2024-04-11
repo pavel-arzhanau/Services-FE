@@ -2,9 +2,24 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 20px;
-  background-color: var(--primary-color);
-  color: #fff
+  background-color: var(--color-primary);
+  color: #fff;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 30px;
+  height: 60px;
+}
+
+.navbar {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  -webkit-clip-path: inset(0px 0px 99.9% 99.9%);
+  clip-path: inset(0px 0px 99.9% 99.9%);
+  overflow: hidden;
+  height: 1px;
+  width: 1px;
+  padding: 0;
+  border: 0;
 }
 
 .list {
@@ -23,5 +38,48 @@
 .languageBlock {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 5px;
+  color: var(--color-fourth)
+}
+
+.select {
+  border: none;
+  background-color: inherit;
+  color: var(--color-fourth);
+  outline: none;
+}
+
+.option {
+  background-color: var(--color-fifth);
+  border: none;
+  outline: none;
+  padding: 0;
+  color: black
+}
+
+.burgerButton {
+  color: var(--color-fourth)
+}
+
+.link {
+  text-transform: capitalize;
+  text-decoration: none;
+  color: var(--color-fifth);
+  font-weight: bold;
+}
+
+@media only screen and (min-width: 40em) {
+  .burger {
+    display: none;
+  }
+
+  .navbar {
+    position: static;
+    clip: auto;
+    -webkit-clip-path: none;
+    clip-path: none;
+    overflow: visible;
+    height: auto;
+    width: auto;
+  }
 }

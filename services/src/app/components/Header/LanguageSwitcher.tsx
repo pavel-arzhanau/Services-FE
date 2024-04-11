@@ -5,6 +5,13 @@ import { i18n } from "@/i18n-config";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { supportedLanguages } from "@/types";
+import styles from "./Header.module.css";
+import { Roboto } from "next/font/google";
+
+const roboto = Roboto({
+  weight: ["400", "500", "700", "900"],
+  subsets: ["cyrillic"],
+});
 
 type Props = {
   lang: supportedLanguages;
@@ -53,14 +60,26 @@ export default function LanguageSwitcher({ lang }: Props) {
   }, []);
 
   return (
-    <select
-      ref={selectRef}
-      name="language"
-      id="language-select"
-      onChange={change}
-    >
-      <option value="ru">Русский</option>
-      <option value="by">Беларуская</option>
-    </select>
+    <>
+      <style jsx global>{`
+        html {
+          font-family: ${roboto.style.fontFamily};
+        }
+      `}</style>
+      <select
+        ref={selectRef}
+        name="language"
+        id="language-select"
+        onChange={change}
+        className={styles.select}
+      >
+        <option className={styles.option} value="ru">
+          RU
+        </option>
+        <option className={styles.option} value="by">
+          BY
+        </option>
+      </select>
+    </>
   );
 }

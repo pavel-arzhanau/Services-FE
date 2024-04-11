@@ -1,9 +1,13 @@
 :root {
-  --primary-color: #3b8beb;
+  --color-primary: #3b8beb;
   --color-secondary: #fffff0;
   --color-tertiary: #b23850;
   --color-fourth: #c4dbf6;
   --color-fifth: #8590aa;
+
+  --small-device: 40em;
+  --medium-device: 48em;
+  --large-device: 64em;
 }
 
 /* Normalize */

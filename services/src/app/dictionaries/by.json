@@ -89,5 +89,11 @@
     "price": "Кошт",
     "chooseCategory": "Абярыце катэгорыю",
     "chooseSubcategory": "Абярыце падкатэгорыю"
+  },
+  "ad": {
+    "feedbacks": "водгукаў",
+    "price": "Кошт",
+    "connect": "Звязацца",
+    "more": "Больш падрабязна"
   }
 }

@@ -3,6 +3,8 @@ import { supportedLanguages } from "@/types";
 import { getAdsBySubcategory } from "@/app/actions/ads";
 import MainLayout from "@/app/components/MainLayout/MainLayout";
 import { IAd } from "@/types/IAd";
+import styles from "./Ads.module.css";
+import AdCard from "./components/AdCard";
 
 type Props = {
   params: {
@@ -21,12 +23,9 @@ export default async function Subcategory({
 
   return (
     <MainLayout lang={lang}>
-      <main>
+      <main className={styles.main}>
         {ads.map((ad: IAd) => (
-          <>
-            <div>{ad.title}</div>
-            <div>Исполнитель: {ad.user.name}</div>
-          </>
+          <AdCard key={ad.id} ad={ad} lang={lang} />
         ))}
       </main>
     </MainLayout>

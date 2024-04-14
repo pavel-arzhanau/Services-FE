@@ -1,0 +1,65 @@
+.main {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+}
+
+.ad {
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: var(--color-fourth);
+}
+
+.infoBlock {
+  display: flex;
+  gap: 10px;
+}
+
+.avatarBlock {
+  display: flex;
+  flex-direction: column;
+}
+
+.textBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.feedbackBlock {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.starsBlock {
+  display: flex;
+  align-items: center;
+}
+
+.buttonsBlock {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button {
+  border: none;
+  outline: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: var(--color-secondary)
+}
+
+.connect {
+  background-color: var(--color-tertiary);
+}
+
+.more {
+  background-color: var(--color-fifth);
+}

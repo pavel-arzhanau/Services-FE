@@ -89,5 +89,11 @@
     "price": "Цена",
     "chooseCategory": "Выберите категорию",
     "chooseSubcategory": "Выберите подкатегорию"
+  },
+  "ad": {
+    "feedbacks": "отзывов",
+    "price": "Цена",
+    "connect": "Связаться",
+    "more": "Подробнее"
   }
 }

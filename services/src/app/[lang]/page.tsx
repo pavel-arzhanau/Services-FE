@@ -2,6 +2,7 @@ import MainLayout from "../components/MainLayout/MainLayout";
 import { supportedLanguages } from "@/types";
 import type { Metadata } from "next";
 import Categories from "./Categories";
+import CreateAd from "./CreateAd";
 import styles from "./Home.module.css";
 
 export const metadata: Metadata = {
@@ -20,6 +21,7 @@ export default async function Home({ params: { lang } }: Props) {
     <MainLayout lang={lang}>
       <main className={styles.main}>
         <Categories lang={lang} />
+        <CreateAd lang={lang} />
       </main>
     </MainLayout>
   );

@@ -2,6 +2,13 @@
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.wrapper {
+  padding: 30px 0;
 }
 
 .categories {
@@ -11,6 +18,7 @@
   list-style: none;
   padding: 0;
   justify-content: space-between;
+  margin: 0;
 }
 
 .category {
@@ -33,4 +41,23 @@
 .subcategory a {
   text-decoration: none;
   color: var(--color-text)
+}
+
+.createAdWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.createAdButton {
+  border: none;
+  outline: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  background-color: var(--color-primary);
+
+}
+
+.createAdButton a {
+  color: var(--color-secondary);
 }

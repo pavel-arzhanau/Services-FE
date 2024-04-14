@@ -32,7 +32,9 @@ export default function LoginLogout({ logout, auth, lang }: Props) {
   return (
     <>
       {isLogin ? (
-        <LogoutIcon className={styles.icon} onClick={logoutUser} />
+        <CustomLink className={styles.icon} href="/" lang={lang}>
+          <LogoutIcon className={styles.icon} onClick={logoutUser} />
+        </CustomLink>
       ) : (
         <CustomLink className={styles.icon} href="/login" lang={lang}>
           <LoginIcon />

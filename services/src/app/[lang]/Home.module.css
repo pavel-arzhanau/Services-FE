@@ -43,21 +43,27 @@
   color: var(--color-text)
 }
 
-.createAdWrapper {
+.createWrapper {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.createAdButton {
+.createAdButton, .createTaskButton {
   border: none;
   outline: none;
   padding: 10px 15px;
   border-radius: 5px;
-  background-color: var(--color-primary);
-
 }
 
-.createAdButton a {
+.createAdButton {
+  background-color: var(--color-primary);
+}
+
+.createTaskButton {
+  background-color: var(--color-tertiary);
+}
+
+.createAdButton a, .createTaskButton a {
   color: var(--color-secondary);
 }

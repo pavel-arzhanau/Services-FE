@@ -25,7 +25,13 @@ export default async function Subcategory({
     <MainLayout lang={lang}>
       <main className={styles.main}>
         {ads.map((ad: IAd) => (
-          <AdCard key={ad.id} ad={ad} lang={lang} />
+          <AdCard
+            key={ad.id}
+            ad={ad}
+            lang={lang}
+            category={category}
+            subcategory={subcategory}
+          />
         ))}
       </main>
     </MainLayout>

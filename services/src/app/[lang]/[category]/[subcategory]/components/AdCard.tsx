@@ -6,13 +6,21 @@ import Image from "next/image";
 import { Avatar } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
 import Divider from "@mui/material/Divider";
+import CustomLink from "@/app/components/CustomLink/CustomLink";
 
 type Props = {
   lang: supportedLanguages;
   ad: IAd;
+  category: string;
+  subcategory: string;
 };
 
-export default async function AdCard({ lang, ad }: Props) {
+export default async function AdCard({
+  lang,
+  ad,
+  category,
+  subcategory,
+}: Props) {
   const dictionary = await getDictionary(lang);
 
   const hasImage = Boolean(ad.user.photo);
@@ -58,9 +66,11 @@ export default async function AdCard({ lang, ad }: Props) {
         <button className={`${styles.button} ${styles.connect}`}>
           {dictionary.ad.connect}
         </button>
-        <button className={`${styles.button} ${styles.more}`}>
-          {dictionary.ad.more}
-        </button>
+        <CustomLink lang={lang} href={`/${category}/${subcategory}/${ad.id}`}>
+          <button className={`${styles.button} ${styles.more}`}>
+            {dictionary.ad.more}
+          </button>
+        </CustomLink>
       </div>
     </article>
   );

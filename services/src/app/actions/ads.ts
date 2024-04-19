@@ -19,6 +19,18 @@ async function getAdsBySubcategory(
   return ads.json();
 }
 
+async function getAdById(id: string): Promise<IAd> {
+  const ad = await fetch(`${API_BASE_URL}/ads/${id}`, {
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+      Cookie: cookies().toString(),
+    },
+  });
+
+  return ad.json();
+}
+
 async function createAd(
   userId: number,
   subcategoryId: number,
@@ -44,4 +56,4 @@ async function createAd(
 
   return ad.json();
 }
-export { getAdsBySubcategory, createAd };
+export { getAdsBySubcategory, createAd, getAdById };

@@ -18,8 +18,6 @@ export default async function Subcategory({ params: { lang, id } }: Props) {
 
   const ad = await getAdById(id);
 
-  console.log(ad);
-
   return (
     <MainLayout lang={lang}>
       <main className={styles.main}>{id}</main>

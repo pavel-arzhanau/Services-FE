@@ -2,7 +2,7 @@ import { getDictionary } from "@/app/utils/getDictionary";
 import { supportedLanguages } from "@/types";
 import { getAdsBySubcategory } from "@/app/actions/ads";
 import MainLayout from "@/app/components/MainLayout/MainLayout";
-import { IAd } from "@/types/IAd";
+import { IAd } from "@/types";
 import styles from "./Ads.module.css";
 import AdCard from "./components/AdCard";
 

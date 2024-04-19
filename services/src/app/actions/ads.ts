@@ -2,7 +2,7 @@
 
 import { cookies } from "next/headers";
 import { API_BASE_URL } from "../constants";
-import { IAd } from "@/types/IAd";
+import { IAd } from "@/types";
 
 async function getAdsBySubcategory(
   category: string,

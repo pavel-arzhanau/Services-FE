@@ -1,6 +1,6 @@
 import { getDictionary } from "@/app/utils/getDictionary";
 import { supportedLanguages } from "@/types";
-import { IAd } from "@/types/IAd";
+import { IAd } from "@/types";
 import styles from "../Ads.module.css";
 import Image from "next/image";
 import { Avatar } from "@mui/material";

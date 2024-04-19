@@ -37,36 +37,45 @@ export default async function Header({ lang }: Props) {
   const auth = await checkAuth();
 
   return (
-    <header className={styles.header}>
-      <CustomLink href={"/"} lang={lang}>
-        <Image src="/logo.png" alt="logo" width={100} height={50} />
-      </CustomLink>
-      <nav className={styles.navbar}>
-        <ul className={styles.list}>
-          {menuItems.map((item) => (
-            <li key={item.path}>
-              <CustomLink href={item.path} lang={lang}>
-                {item.title}
-              </CustomLink>
-            </li>
-          ))}
-        </ul>
-      </nav>
-      {auth.user ? (
-        <ProfileButton lang={lang} logout={logout} auth={auth} />
-      ) : (
-        <IconButton>
-          <CustomLink className={styles.icon} href="/login" lang={lang}>
-            <LoginIcon />
-          </CustomLink>
-        </IconButton>
-      )}
-      <BurgerMenu
-        menuItems={menuItems}
-        lang={lang}
-        logout={logout}
-        auth={auth}
-      />
+    <header className={styles.headerWrapper}>
+      <div className={styles.header}>
+        <CustomLink href={"/"} lang={lang}>
+          <Image src="/logo.png" alt="logo" width={100} height={50} />
+        </CustomLink>
+        <nav className={styles.navbar}>
+          <ul className={styles.list}>
+            {menuItems.map((item) => (
+              <li key={item.path}>
+                <CustomLink href={item.path} lang={lang}>
+                  {item.title}
+                </CustomLink>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        {auth.user ? (
+          <ProfileButton lang={lang} logout={logout} auth={auth} />
+        ) : (
+          <IconButton
+            sx={{
+              display: "none",
+              "@media (min-width: 40em)": {
+                display: "flex",
+              },
+            }}
+          >
+            <CustomLink className={styles.icon} href="/login" lang={lang}>
+              <LoginIcon />
+            </CustomLink>
+          </IconButton>
+        )}
+        <BurgerMenu
+          menuItems={menuItems}
+          lang={lang}
+          logout={logout}
+          auth={auth}
+        />
+      </div>
     </header>
   );
 }

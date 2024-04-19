@@ -1,8 +1,12 @@
+.headerWrapper {
+  width: 100%;
+  background-color: var(--color-primary);
+}
+
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--color-primary);
   color: #fff;
   max-width: 1400px;
   margin: 0 auto;
@@ -33,6 +37,11 @@
   text-decoration: none;
   color: var(--color-fourth);
   font-weight: bold;
+  transition: all 0.3s ease-in-out;
+}
+
+.list a:hover {
+  color: #fff
 }
 
 .burgerButton {
@@ -75,6 +84,14 @@
 
 @media only screen and (min-width: 48em) {
   .header {
-    padding: 0 30px
+    padding: 30px 30px
+  }
+
+  .list {
+    gap: 30px;
+  }
+
+  .list a {
+    font-size: 1.6em;
   }
 }

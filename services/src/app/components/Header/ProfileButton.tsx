@@ -3,20 +3,19 @@
 import React, { MouseEvent, useEffect, useState } from "react";
 
 // mui
-import MenuIcon from "@mui/icons-material/Menu";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { IconButton } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
-import Divider from "@mui/material/Divider";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 // components
 import CustomLink from "../CustomLink/CustomLink";
-import LoginLogoutMobile from "./LoginLogoutMobile";
 
 // utility
 import { AuthResponse, IUser, supportedLanguages } from "@/types";
 import { useUserStore } from "@/app/stores/userStore";
+import { getDictionaryInClientComponent } from "@/app/utils/getDictionaryInClientComponent";
 import styles from "./Header.module.css";
 
 type MenuItem = {
@@ -25,19 +24,18 @@ type MenuItem = {
 };
 
 type Props = {
-  menuItems: MenuItem[];
   lang: supportedLanguages;
   logout: () => Promise<void>;
   auth: AuthResponse;
 };
 
-export default function BurgerMenu({ menuItems, lang, logout, auth }: Props) {
+export default function ProfileButton({ lang, logout, auth }: Props) {
   const [anchorEl, setAnchorEl] = useState<null | HTMLButtonElement>(null);
   const open = Boolean(anchorEl);
-  const isAuth = useUserStore((state) => state.isAuth);
   const setUser = useUserStore((state) => state.setUser);
   const setIsAuth = useUserStore((state) => state.setIsAuth);
   const isLogin = Boolean(auth.user);
+  const dictionary = getDictionaryInClientComponent(lang);
 
   useEffect(() => {
     if (isLogin) {
@@ -65,16 +63,24 @@ export default function BurgerMenu({ menuItems, lang, logout, auth }: Props) {
   };
 
   return (
-    <div className={styles.burger}>
+    <>
       <IconButton
-        aria-controls={open ? "basic-menu" : undefined}
+        aria-controls={open ? "profile-menu" : undefined}
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
-        className={styles.burgerButton}
       >
-        <MenuIcon />
+        <Avatar
+          sx={{
+            display: "none",
+            cursor: "pointer",
+            "@media (min-width: 40em)": {
+              display: "flex",
+            },
+          }}
+        />
       </IconButton>
+
       <Menu
         id="basic-menu"
         anchorEl={anchorEl}
@@ -84,28 +90,20 @@ export default function BurgerMenu({ menuItems, lang, logout, auth }: Props) {
           "aria-labelledby": "basic-button",
         }}
       >
-        {menuItems.map((item) => (
-          <MenuItem key={item.path} onClick={handleClose}>
-            <CustomLink className={styles.link} href={item.path} lang={lang}>
-              {item.title}
-            </CustomLink>
-          </MenuItem>
-        ))}
-        <Divider />
-        {isAuth && (
-          <MenuItem key="avatar" onClick={handleClose}>
-            <CustomLink className={styles.link} href={"/profile"} lang={lang}>
-              <div className={styles.menuItemWithIcon}>
-                <Avatar sx={{ width: 24, height: 24 }} />
-                Профиль
-              </div>
-            </CustomLink>
-          </MenuItem>
-        )}
+        <MenuItem key="avatar" onClick={handleClose}>
+          <CustomLink className={styles.link} href={"/profile"} lang={lang}>
+            {dictionary.header.profile}
+          </CustomLink>
+        </MenuItem>
         <MenuItem key="auth" onClick={onAuthClick}>
-          <LoginLogoutMobile lang={lang} />
+          <CustomLink className={styles.link} href="/" lang={lang}>
+            <div className={styles.menuItemWithIcon}>
+              <LogoutIcon />
+              {dictionary.header.logout}
+            </div>
+          </CustomLink>
         </MenuItem>
       </Menu>
-    </div>
+    </>
   );
 }

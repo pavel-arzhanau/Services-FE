@@ -1,12 +1,13 @@
 import Image from "next/image";
 import styles from "./Header.module.css";
-import Avatar from "@mui/material/Avatar";
 import { getDictionary } from "@/app/utils/getDictionary";
 import CustomLink from "../CustomLink/CustomLink";
 import { supportedLanguages } from "@/types";
 import { checkAuth, logout } from "@/app/actions/auth";
-import LoginLogout from "./LoginLogout";
 import BurgerMenu from "./BurgerMenu";
+import LoginIcon from "@mui/icons-material/Login";
+import ProfileButton from "./ProfileButton";
+import { IconButton } from "@mui/material";
 
 type Props = {
   lang: supportedLanguages;
@@ -51,9 +52,21 @@ export default async function Header({ lang }: Props) {
           ))}
         </ul>
       </nav>
-      {auth.user && <Avatar />}
-      <LoginLogout lang={lang} logout={logout} auth={auth} />
-      <BurgerMenu menuItems={menuItems} lang={lang} />
+      {auth.user ? (
+        <ProfileButton lang={lang} logout={logout} auth={auth} />
+      ) : (
+        <IconButton>
+          <CustomLink className={styles.icon} href="/login" lang={lang}>
+            <LoginIcon />
+          </CustomLink>
+        </IconButton>
+      )}
+      <BurgerMenu
+        menuItems={menuItems}
+        lang={lang}
+        logout={logout}
+        auth={auth}
+      />
     </header>
   );
 }

@@ -6,7 +6,9 @@
       "favorites": "избранное",
       "about": "о нас",
       "support": "помощь"
-    }
+    },
+    "profile": "Профиль",
+    "logout": "Выйти"
   },
   "login": {
     "signIn": "войти",

@@ -39,6 +39,12 @@
   color: var(--color-fourth)
 }
 
+.menuItemWithIcon {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .link {
   text-transform: capitalize;
   text-decoration: none;

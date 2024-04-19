@@ -6,7 +6,9 @@
       "favorites": "абранае",
       "about": "пра нас",
       "support": "дапамога"
-    }
+    },
+    "profile": "Профіль",
+    "logout": "Выйсці"
   },
   "login": {
     "signIn": "увайсці",

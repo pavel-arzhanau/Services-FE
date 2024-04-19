@@ -2,7 +2,7 @@
 
 import { cookies } from "next/headers";
 import { API_BASE_URL } from "../constants";
-import { IAd } from "@/types/IAd";
+import { IAd } from "@/types";
 
 async function getAdsBySubcategory(
   category: string,
@@ -17,6 +17,18 @@ async function getAdsBySubcategory(
   });
 
   return ads.json();
+}
+
+async function getAdById(id: string): Promise<IAd> {
+  const ad = await fetch(`${API_BASE_URL}/ads/${id}`, {
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+      Cookie: cookies().toString(),
+    },
+  });
+
+  return ad.json();
 }
 
 async function createAd(
@@ -44,4 +56,4 @@ async function createAd(
 
   return ad.json();
 }
-export { getAdsBySubcategory, createAd };
+export { getAdsBySubcategory, createAd, getAdById };

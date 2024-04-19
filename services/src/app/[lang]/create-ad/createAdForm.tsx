@@ -5,7 +5,7 @@ import { getDictionaryInClientComponent } from "@/app/utils/getDictionaryInClien
 import { useForm } from "react-hook-form";
 import styles from "./createAd.module.css";
 import { useUserStore } from "@/app/stores/userStore";
-import { IAd } from "@/types/IAd";
+import { IAd } from "@/types";
 import { ChangeEvent, useState } from "react";
 
 type Props = {

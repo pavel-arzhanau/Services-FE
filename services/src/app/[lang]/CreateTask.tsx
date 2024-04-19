@@ -9,15 +9,15 @@ type Props = {
   lang: supportedLanguages;
 };
 
-export default function CreateAd({ lang }: Props) {
+export default function CreateTask({ lang }: Props) {
   const dictionary = getDictionaryInClientComponent(lang);
   const isAuth = useUserStore((state) => state.isAuth);
 
   return (
     <section className={`${styles.wrapper} ${styles.createWrapper}`}>
-      <button className={styles.createAdButton}>
-        <CustomLink href={isAuth ? "/create-ad" : "/login"} lang={lang}>
-          {dictionary.home.createAd}
+      <button className={styles.createTaskButton}>
+        <CustomLink href={isAuth ? "/create-task" : "/login"} lang={lang}>
+          {dictionary.home.createTask}
         </CustomLink>
       </button>
     </section>

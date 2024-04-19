@@ -15,6 +15,7 @@ export default function CreateTask({ lang }: Props) {
 
   return (
     <section className={`${styles.wrapper} ${styles.createWrapper}`}>
+      <h2>{dictionary.home.createTaskSlogan}</h2>
       <button className={styles.createTaskButton}>
         <CustomLink href={isAuth ? "/create-task" : "/login"} lang={lang}>
           {dictionary.home.createTask}

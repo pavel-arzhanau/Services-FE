@@ -15,6 +15,7 @@ export default function CreateAd({ lang }: Props) {
 
   return (
     <section className={`${styles.wrapper} ${styles.createWrapper}`}>
+      <h2>{dictionary.home.createAdSlogan}</h2>
       <button className={styles.createAdButton}>
         <CustomLink href={isAuth ? "/create-ad" : "/login"} lang={lang}>
           {dictionary.home.createAd}

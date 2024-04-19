@@ -1,9 +1,7 @@
 import Image from "next/image";
 import styles from "./Header.module.css";
 import Avatar from "@mui/material/Avatar";
-import LanguageIcon from "@mui/icons-material/Language";
 import { getDictionary } from "@/app/utils/getDictionary";
-import LanguageSwitcher from "./LanguageSwitcher";
 import CustomLink from "../CustomLink/CustomLink";
 import { supportedLanguages } from "@/types";
 import { checkAuth, logout } from "@/app/actions/auth";
@@ -53,10 +51,6 @@ export default async function Header({ lang }: Props) {
           ))}
         </ul>
       </nav>
-      <div className={styles.languageBlock}>
-        <LanguageIcon />
-        <LanguageSwitcher lang={lang} />
-      </div>
       {auth.user && <Avatar />}
       <LoginLogout lang={lang} logout={logout} auth={auth} />
       <BurgerMenu menuItems={menuItems} lang={lang} />

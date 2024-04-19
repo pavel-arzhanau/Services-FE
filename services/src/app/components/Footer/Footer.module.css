@@ -23,3 +23,15 @@
   color: var(--color-text);
   font-weight: bold;
 }
+
+.languageBlock {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--color-text)
+}
+
+.basement {
+  display: flex;
+  gap: 30px;
+}

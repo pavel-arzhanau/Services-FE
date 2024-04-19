@@ -4,6 +4,8 @@ import { getDictionary } from "@/app/utils/getDictionary";
 import CustomLink from "../CustomLink/CustomLink";
 import { supportedLanguages } from "@/types";
 import Divider from "@mui/material/Divider";
+import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher";
+import LanguageIcon from "@mui/icons-material/Language";
 
 type Props = {
   lang: supportedLanguages;
@@ -45,7 +47,13 @@ export default async function Footer({ lang }: Props) {
         ))}
       </ul>
       <Divider variant="middle" sx={{ width: "90%" }} />
-      <p>© 2024 Services</p>
+      <div className={styles.basement}>
+        <p>© 2024 Services </p>
+        <div className={styles.languageBlock}>
+          <LanguageIcon />
+          <LanguageSwitcher lang={lang} />
+        </div>
+      </div>
     </header>
   );
 }

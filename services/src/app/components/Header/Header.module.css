@@ -35,30 +35,6 @@
   font-weight: bold;
 }
 
-.languageBlock {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  color: var(--color-fourth)
-}
-
-.select {
-  border: none;
-  background-color: inherit;
-  color: var(--color-fourth);
-  outline: none;
-  cursor: pointer;
-}
-
-.option {
-  background-color: var(--color-fifth);
-  border: none;
-  outline: none;
-  padding: 0;
-  color: black;
-  cursor: pointer;
-}
-
 .burgerButton {
   color: var(--color-fourth)
 }

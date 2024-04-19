@@ -32,7 +32,9 @@ export default async function Footer({ lang }: Props) {
 
   return (
     <header className={styles.footer}>
-      <Image src="/logo.png" alt="logo" width={280} height={140} />
+      <CustomLink href={"/"} lang={lang}>
+        <Image src="/logo.png" alt="logo" width={280} height={140} />
+      </CustomLink>
       <ul className={styles.list}>
         {menuItems.map((item) => (
           <li key={item.path}>

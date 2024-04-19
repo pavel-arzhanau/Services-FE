@@ -39,7 +39,9 @@ export default async function Header({ lang }: Props) {
 
   return (
     <header className={styles.header}>
-      <Image src="/logo.png" alt="logo" width={100} height={50} />
+      <CustomLink href={"/"} lang={lang}>
+        <Image src="/logo.png" alt="logo" width={100} height={50} />
+      </CustomLink>
       <nav className={styles.navbar}>
         <ul className={styles.list}>
           {menuItems.map((item) => (

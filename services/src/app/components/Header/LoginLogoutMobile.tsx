@@ -2,11 +2,10 @@
 import LoginIcon from "@mui/icons-material/Login";
 import LogoutIcon from "@mui/icons-material/Logout";
 import CustomLink from "../CustomLink/CustomLink";
-import { IUser, supportedLanguages } from "@/types";
-import { AuthResponse } from "@/types";
+import { supportedLanguages } from "@/types";
 import styles from "./Header.module.css";
-import MenuItem from "@mui/material/MenuItem";
 import { useUserStore } from "@/app/stores/userStore";
+import { getDictionaryInClientComponent } from "@/app/utils/getDictionaryInClientComponent";
 
 type Props = {
   lang: supportedLanguages;
@@ -14,6 +13,7 @@ type Props = {
 
 export default function LoginLogoutMobile({ lang }: Props) {
   const isAuth = useUserStore((state) => state.isAuth);
+  const dictionary = getDictionaryInClientComponent(lang);
 
   return (
     <>
@@ -21,14 +21,14 @@ export default function LoginLogoutMobile({ lang }: Props) {
         <CustomLink className={styles.link} href="/" lang={lang}>
           <div className={styles.menuItemWithIcon}>
             <LogoutIcon />
-            Выйти
+            {dictionary.header.logout}
           </div>
         </CustomLink>
       ) : (
         <CustomLink className={styles.link} href="/login" lang={lang}>
           <div className={styles.menuItemWithIcon}>
             <LoginIcon />
-            Войти
+            {dictionary.header.signIn}
           </div>
         </CustomLink>
       )}

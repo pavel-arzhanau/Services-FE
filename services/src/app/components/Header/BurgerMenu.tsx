@@ -18,6 +18,7 @@ import LoginLogoutMobile from "./LoginLogoutMobile";
 import { AuthResponse, IUser, supportedLanguages } from "@/types";
 import { useUserStore } from "@/app/stores/userStore";
 import styles from "./Header.module.css";
+import { getDictionaryInClientComponent } from "@/app/utils/getDictionaryInClientComponent";
 
 type MenuItem = {
   path: string;
@@ -38,6 +39,7 @@ export default function BurgerMenu({ menuItems, lang, logout, auth }: Props) {
   const setUser = useUserStore((state) => state.setUser);
   const setIsAuth = useUserStore((state) => state.setIsAuth);
   const isLogin = Boolean(auth.user);
+  const dictionary = getDictionaryInClientComponent(lang);
 
   useEffect(() => {
     if (isLogin) {
@@ -97,7 +99,7 @@ export default function BurgerMenu({ menuItems, lang, logout, auth }: Props) {
             <CustomLink className={styles.link} href={"/profile"} lang={lang}>
               <div className={styles.menuItemWithIcon}>
                 <Avatar sx={{ width: 24, height: 24 }} />
-                Профиль
+                {dictionary.header.profile}
               </div>
             </CustomLink>
           </MenuItem>

@@ -5,7 +5,7 @@ import { i18n } from "@/i18n-config";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { supportedLanguages } from "@/types";
-import styles from "./Header.module.css";
+import styles from "./LanguageSwitcher.module.css";
 import { Lato } from "next/font/google";
 
 const lato = Lato({

@@ -1,8 +1,12 @@
+.headerWrapper {
+  width: 100%;
+  background-color: var(--color-primary);
+}
+
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--color-primary);
   color: #fff;
   max-width: 1400px;
   margin: 0 auto;
@@ -33,34 +37,21 @@
   text-decoration: none;
   color: var(--color-fourth);
   font-weight: bold;
+  transition: all 0.3s ease-in-out;
 }
 
-.languageBlock {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  color: var(--color-fourth)
-}
-
-.select {
-  border: none;
-  background-color: inherit;
-  color: var(--color-fourth);
-  outline: none;
-  cursor: pointer;
-}
-
-.option {
-  background-color: var(--color-fifth);
-  border: none;
-  outline: none;
-  padding: 0;
-  color: black;
-  cursor: pointer;
+.list a:hover {
+  color: #fff
 }
 
 .burgerButton {
   color: var(--color-fourth)
+}
+
+.menuItemWithIcon {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .link {
@@ -93,6 +84,14 @@
 
 @media only screen and (min-width: 48em) {
   .header {
-    padding: 0 30px
+    padding: 30px 30px
+  }
+
+  .list {
+    gap: 30px;
+  }
+
+  .list a {
+    font-size: 1.6em;
   }
 }

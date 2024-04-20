@@ -1,9 +1,13 @@
+.footerWrapper {
+  width: 100%;
+  background-color: var(--color-fourth);
+}
+
 .footer {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--color-fourth);
   color: var(--color-text);
   max-width: 1400px;
   margin: 0 auto;
@@ -22,4 +26,16 @@
   text-decoration: none;
   color: var(--color-text);
   font-weight: bold;
+}
+
+.languageBlock {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--color-text)
+}
+
+.basement {
+  display: flex;
+  gap: 30px;
 }

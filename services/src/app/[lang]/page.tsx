@@ -1,10 +1,12 @@
 import MainLayout from "../components/MainLayout/MainLayout";
 import { supportedLanguages } from "@/types";
 import type { Metadata } from "next";
-import Categories from "./Categories";
-import CreateAd from "./CreateAd";
 import CreateTask from "./CreateTask";
-import styles from "./Home.module.css";
+import styles from "./Home.module.scss";
+import Image from "next/image";
+import CustomLink from "../components/CustomLink/CustomLink";
+import { getDictionary } from "../utils/getDictionary";
+import Categories from "./Categories";
 
 export const metadata: Metadata = {
   title: "Services App",
@@ -18,12 +20,120 @@ type Props = {
 };
 
 export default async function Home({ params: { lang } }: Props) {
+  const dictionary = await getDictionary(lang);
+
   return (
     <MainLayout lang={lang}>
       <main className={styles.main}>
-        <Categories lang={lang} />
-        <CreateAd lang={lang} />
+        <section className={styles.sectionIntro}>
+          <div className={styles.text}>
+            <h1>{dictionary.home.introTextHeader}</h1>
+            <p>{dictionary.home.introText}</p>
+          </div>
+          <div className={styles.sectionIntroImage}>
+            <Image src="/images/homepage/home-page-intro.png" alt="logo" fill />
+          </div>
+        </section>
         <CreateTask lang={lang} />
+        <CustomLink className={styles.goToAdsButton} href="/ads" lang={lang}>
+          {dictionary.home.lookAtAds}
+        </CustomLink>
+        <p>{dictionary.home.text1}</p>
+        <Image
+          src="/images/homepage/home-page-2.png"
+          alt="logo"
+          width={296}
+          height={143}
+          style={{ margin: "0 auto" }}
+        />
+        <Categories lang={lang} />
+        <section className={styles.homeOffer}>
+          <div>
+            <h4>{dictionary.home.text2}</h4>
+            <p>{dictionary.home.text3}</p>
+            <p>{dictionary.home.text4}</p>
+          </div>
+          <Image
+            className={styles.img}
+            src="/images/home2.jpg"
+            alt="service"
+            width={150}
+            height={150}
+          />
+        </section>
+        <section style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
+          <h3 style={{ gridArea: "1 / 2 / 2 / 3" }}>{dictionary.home.text5}</h3>
+        </section>
+        <section className={styles.howItWorks}>
+          <Image
+            src="/images/homepage/how-it-works-1.png"
+            alt="service"
+            width={134}
+            height={115}
+          />
+          <div>
+            <h3>1. {dictionary.home.stage}</h3>
+            <p>{dictionary.home.text6}</p>
+          </div>
+          <div>
+            <h3>2. {dictionary.home.stage}</h3>
+            <p>{dictionary.home.text7}</p>
+          </div>
+          <Image
+            src="/images/homepage/how-it-works-2.png"
+            alt="service"
+            width={150}
+            height={124}
+          />
+          <Image
+            className={styles.createAdImg}
+            src="/images/homepage/how-it-works-3.png"
+            alt="service"
+            width={164}
+            height={106}
+          />
+          <div>
+            <h3>3. {dictionary.home.stage}</h3>
+            <p>{dictionary.home.text8}</p>
+          </div>
+        </section>
+        <button className={styles.getExecutorsButton}>
+          <CustomLink href={"/executors"} lang={lang}>
+            {dictionary.home.lookAtExecutors}
+          </CustomLink>
+        </button>
+        <h3 style={{ textAlign: "center" }}>{dictionary.home.advantages}</h3>
+        <section className={styles.advantages}>
+          <div className={styles.advantage}>
+            <Image
+              src="/images/homepage/advantages-1.png"
+              alt="service"
+              width={80}
+              height={73}
+            />
+            <p>{dictionary.home.text9}</p>
+          </div>
+          <div className={styles.advantage}>
+            <Image
+              className={styles.createAdImg}
+              src="/images/homepage/advantages-2.png"
+              alt="service"
+              width={67}
+              height={72}
+            />
+            <p> {dictionary.home.text10}</p>
+          </div>
+          <div className={styles.advantage}>
+            <Image
+              className={styles.createAdImg}
+              src="/images/homepage/advantages-3.png"
+              alt="service"
+              width={86}
+              height={72}
+            />
+            <p> {dictionary.home.text10}</p>
+          </div>
+        </section>
       </main>
     </MainLayout>
   );

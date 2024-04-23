@@ -1,4 +1,4 @@
-import styles from "./Home.module.css";
+import styles from "./Categories.module.scss";
 import { getDictionary } from "@/app/utils/getDictionary";
 import { supportedLanguages } from "@/types";
 import { getCategories } from "../actions/categories";
@@ -15,7 +15,7 @@ export default async function Categories({ lang }: Props) {
   const categories = await getCategories();
 
   return (
-    <section className={styles.wrapper}>
+    <section>
       <ul className={styles.categories}>
         {categories.map((category: ICategory) => (
           <li key={category.id}>

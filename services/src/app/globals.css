@@ -9,6 +9,8 @@
   --small-device: 40em;
   --medium-device: 48em;
   --large-device: 64em;
+
+  --color-text-v2: #31456A;
 }
 
 /* Normalize */
@@ -36,7 +38,6 @@ html {
 
 body {
   margin: 0;
-  background-color: var(--color-secondary);
 }
 
 /**

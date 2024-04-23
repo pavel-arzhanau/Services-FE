@@ -6,3 +6,87 @@
   flex-direction: column;
   gap: 20px;
 }
+
+.ad {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: var(--color-fourth);
+}
+
+.infoBlock {
+  display: flex;
+  gap: 10px;
+}
+
+.avatarBlock {
+  display: flex;
+  flex-direction: column;
+}
+
+.textBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.feedbackBlock {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.starsBlock {
+  display: flex;
+  align-items: center;
+}
+
+.buttonsBlock {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button {
+  border: none;
+  outline: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: var(--color-secondary)
+}
+
+.connect {
+  background-color: var(--color-tertiary);
+}
+
+.complain {
+  background-color: var(--color-fifth);
+}
+
+.feedbacksSection {
+  background-color: #fff;
+}
+
+.feedbacksList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.comment {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.commentUserBlock {
+  display: flex;
+  gap: 10px;
+}
+
+.commentTextBlock {
+  display: flex;
+  flex-direction: column;
+}

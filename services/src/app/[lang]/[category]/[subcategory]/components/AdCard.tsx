@@ -7,6 +7,7 @@ import { Avatar } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
 import Divider from "@mui/material/Divider";
 import CustomLink from "@/app/components/CustomLink/CustomLink";
+import { getFeedbackWordByQuantity } from "@/utils";
 
 type Props = {
   lang: supportedLanguages;
@@ -30,6 +31,8 @@ export default async function AdCard({
     imagePhotoUrl = URL.createObjectURL(ad.user.photo);
   }
 
+  const feedbackWord = getFeedbackWordByQuantity(ad.comments.length);
+
   return (
     <article className={styles.ad}>
       <div className={styles.infoBlock}>
@@ -51,7 +54,9 @@ export default async function AdCard({
               5 <StarIcon sx={{ color: "#b23850" }} />
             </div>
             <Divider orientation="vertical" flexItem />
-            <div>0 {dictionary.ad.feedbacks}</div>
+            <div>
+              {ad.comments.length} {dictionary.ad[feedbackWord]}
+            </div>
           </div>
           {ad.price && (
             <div>

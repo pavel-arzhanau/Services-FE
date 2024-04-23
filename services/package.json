@@ -23,6 +23,7 @@
     "react-dom": "^18",
     "react-hook-form": "^7.51.2",
     "react-phone-number-input": "^3.3.9",
+    "sass": "^1.75.0",
     "zustand": "^4.5.2"
   },
   "devDependencies": {

@@ -1,5 +1,6 @@
 import { ICategory } from "./ICategory";
 import IUser from "./IUser";
+import IComment from "./IComment";
 
 export interface IAd {
   id: string;
@@ -15,4 +16,5 @@ export interface IAd {
     category: ICategory;
   };
   user: IUser;
+  comments: IComment[];
 }

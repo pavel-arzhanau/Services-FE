@@ -29,23 +29,35 @@ export default async function Home({ params: { lang } }: Props) {
           <div className={styles.text}>
             <h1>{dictionary.home.introTextHeader}</h1>
             <p>{dictionary.home.introText}</p>
+            <div className="visibleFromTab">
+              <CreateTask lang={lang} />
+            </div>
+            <CustomLink
+              className={`${styles.goToAdsButton} visibleFromTab`}
+              href="/ads"
+              lang={lang}
+            >
+              {dictionary.home.lookAtAds}
+            </CustomLink>
           </div>
           <div className={styles.sectionIntroImage}>
             <Image src="/images/homepage/home-page-intro.png" alt="logo" fill />
           </div>
         </section>
-        <CreateTask lang={lang} />
-        <CustomLink className={styles.goToAdsButton} href="/ads" lang={lang}>
+        <section className="mobileOnly">
+          <CreateTask lang={lang} />
+        </section>
+        <CustomLink
+          className={`${styles.goToAdsButton} mobileOnly`}
+          href="/ads"
+          lang={lang}
+        >
           {dictionary.home.lookAtAds}
         </CustomLink>
-        <p>{dictionary.home.text1}</p>
-        <Image
-          src="/images/homepage/home-page-2.png"
-          alt="logo"
-          width={296}
-          height={143}
-          style={{ margin: "0 auto" }}
-        />
+        <p style={{ textAlign: "center" }}>{dictionary.home.text1}</p>
+        <div className={styles.sectionImage}>
+          <Image src="/images/homepage/home-page-2.png" alt="logo" fill />
+        </div>
         <Categories lang={lang} />
         <section className={styles.homeOffer}>
           <div>
@@ -53,24 +65,21 @@ export default async function Home({ params: { lang } }: Props) {
             <p>{dictionary.home.text3}</p>
             <p>{dictionary.home.text4}</p>
           </div>
-          <Image
-            className={styles.img}
-            src="/images/home2.jpg"
-            alt="service"
-            width={150}
-            height={150}
-          />
+          <div className={styles.imageWrapper}>
+            <Image src="/images/home2.jpg" alt="service" fill />
+          </div>
         </section>
-        <section style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
-          <h3 style={{ gridArea: "1 / 2 / 2 / 3" }}>{dictionary.home.text5}</h3>
+        <section className={styles.howItWorksHeader}>
+          <h3>{dictionary.home.text5}</h3>
         </section>
         <section className={styles.howItWorks}>
-          <Image
-            src="/images/homepage/how-it-works-1.png"
-            alt="service"
-            width={134}
-            height={115}
-          />
+          <div className={styles.img1}>
+            <Image
+              src="/images/homepage/how-it-works-1.png"
+              alt="service"
+              fill
+            />
+          </div>
           <div>
             <h3>1. {dictionary.home.stage}</h3>
             <p>{dictionary.home.text6}</p>
@@ -79,19 +88,21 @@ export default async function Home({ params: { lang } }: Props) {
             <h3>2. {dictionary.home.stage}</h3>
             <p>{dictionary.home.text7}</p>
           </div>
-          <Image
-            src="/images/homepage/how-it-works-2.png"
-            alt="service"
-            width={150}
-            height={124}
-          />
-          <Image
-            className={styles.createAdImg}
-            src="/images/homepage/how-it-works-3.png"
-            alt="service"
-            width={164}
-            height={106}
-          />
+          <div className={styles.img2}>
+            <Image
+              src="/images/homepage/how-it-works-2.png"
+              alt="service"
+              fill
+            />
+          </div>
+          <div className={styles.img3}>
+            <Image
+              className={styles.createAdImg}
+              src="/images/homepage/how-it-works-3.png"
+              alt="service"
+              fill
+            />
+          </div>
           <div>
             <h3>3. {dictionary.home.stage}</h3>
             <p>{dictionary.home.text8}</p>
@@ -102,7 +113,7 @@ export default async function Home({ params: { lang } }: Props) {
             {dictionary.home.lookAtExecutors}
           </CustomLink>
         </button>
-        <h3 style={{ textAlign: "center" }}>{dictionary.home.advantages}</h3>
+        <h3 className={styles.advantagesTitle}>{dictionary.home.advantages}</h3>
         <section className={styles.advantages}>
           <div className={styles.advantage}>
             <Image

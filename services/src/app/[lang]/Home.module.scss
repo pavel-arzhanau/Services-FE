@@ -5,11 +5,20 @@
   display: flex;
   flex-direction: column;
   gap: 50px;
-  color: var(--color-text-v2)
+  color: var(--color-text-v2);
+
+  @media screen and (min-width: $small-device) {
+    padding: 60px;
+  }
 }
 
 .sectionIntro {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  @media screen and (min-width: $small-device) {
+    grid-template-columns: 1fr minmax(auto, 480px);
+  }
 
   & .text {
     display: flex;
@@ -17,21 +26,35 @@
     gap: 10px;
     justify-content: center;
 
+    @media screen and (min-width: $small-device) {
+      gap: 25px;
+      text-align: center;
+    }
+
     & h1 {
       margin: 0;
-      font-size: 1em;
+      font-size: 1rem;
+
+      @media screen and (min-width: $small-device) {
+        font-size: 1.5rem;
+      }
     }
 
     & p {
       margin: 0;
-      font-size: 0.75em;
+      font-size: 0.75rem;
+
+      @media screen and (min-width: $small-device) {
+        font-size: 1rem;
+      }
     }
   }
 
   & .sectionIntroImage {
-    min-width: 50%;
+    width: 100%;
+    max-width: 480px;
     position: relative;
-    min-height: 200px;
+    padding-bottom: 120%;
     justify-self: flex-end;
   }
 }
@@ -42,7 +65,21 @@
   color: #9FCBF1;
   width: fit-content;
   margin: 0 auto;
-  font-size: 0.9em;
+  font-size: 0.9rem;
+}
+
+.sectionImage {
+  width: 100%;
+  max-width: 480px;
+  position: relative;
+  padding-bottom: 48%;
+  margin: 0 auto;
+
+  @media screen and (min-width: $small-device) {
+    padding: 0;
+    width: 480px;
+    height: 230px
+  }
 }
 
 .homeOffer {
@@ -50,13 +87,59 @@
   grid-template-columns: 3fr 2fr;
   gap: 10px;
   align-items: center;
+  max-width: 1040px;
+  margin: 0 auto;
+
+  @media screen and (min-width: $small-device) {
+    & h4 {
+      @media screen and (min-width: $small-device) {
+        font-size: 2rem;
+        margin: 1rem 0;
+      }
+    }
+  }
 
   & p {
     margin: 0;
   }
 
-  & .img {
-    mix-blend-mode: multiply;
+  .imageWrapper {
+    width: 100%;
+    position: relative;
+    padding-bottom: 100%;
+  
+    @media screen and (min-width: $small-device) {
+      padding: 0;
+      width: 200px;
+      height: 200px;
+    }
+
+    @media screen and (min-width: $medium-device) {
+      padding: 0;
+      width: 350px;
+      height: 350px;
+    }
+  }
+}
+
+.howItWorksHeader {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 1040px;
+  margin: 0 auto;
+
+  @media screen and (min-width: $medium-device) {
+    grid-template-columns: 1fr;
+    justify-content: center;
+  }
+
+  & h3 {
+    grid-area: 1 / 2 / 2 / 3;
+
+    @media screen and (min-width: $small-device) {
+      font-size: 2rem;
+      margin: 1rem 0;
+    }
   }
 }
 
@@ -66,6 +149,48 @@
   gap: 40px 25px;
   align-items: center;
   margin-top: -50px;
+  max-width: 1040px;
+  margin: 0 auto;
+
+  & h3 {
+    @media screen and (min-width: $small-device) {
+      font-size: 1.5rem;
+      margin: 0.75rem 0;
+    }
+  }
+
+  & .img1 {
+    width: 80%;
+    position: relative;
+    padding-bottom: 69%;
+
+    @media screen and (min-width: $small-device) {
+      width: 70%;
+      padding-bottom: 60%;
+    }
+  }
+
+  & .img2 {
+    width: 80%;
+    position: relative;
+    padding-bottom: 66%;
+
+    @media screen and (min-width: $small-device) {
+      width: 70%;
+      padding-bottom: 58%;
+    }
+  }
+
+  & .img3 {
+    width: 80%;
+    position: relative;
+    padding-bottom: 52%;
+
+    @media screen and (min-width: $small-device) {
+      width: 70%;
+      padding-bottom: 45%;
+    }
+  }
 }
 
 .getExecutorsButton {
@@ -74,7 +199,7 @@
   outline: none;
   cursor: pointer;
   text-transform: uppercase;
-  font-size: 0.9em;
+  font-size: 0.9rem;
   padding: 15px 40px;
   margin: 0 auto;
   height: 42px;
@@ -82,11 +207,28 @@
   font-weight: 600;
 }
 
+.advantagesTitle {
+  text-align: center;
+
+  @media screen and (min-width: $small-device) {
+    font-size: 2rem;
+    margin: 1rem 0;
+  }
+}
+
 .advantages {
   display: flex;
   flex-direction: column;
   gap: 45px;
   align-items: center;
+  max-width: 1040px;
+  width: 100%;
+  margin: 0 auto;
+
+  @media screen and (min-width: $small-device) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 
   & .advantage {
     width: 60%;
@@ -99,17 +241,5 @@
       margin: 0;
       text-align: center;
     }
-  }
-}
-
-@media only screen and (min-width: 48em) {
-  .main {
-    padding: 30px 50px
-  }
-}
-
-@media only screen and (min-width: 60em) {
-  .main {
-    padding: 40px 80px
   }
 }

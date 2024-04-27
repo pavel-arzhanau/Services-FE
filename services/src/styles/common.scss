@@ -1,0 +1,13 @@
+.mobileOnly {
+  @media screen and (min-width: $small-device) {
+    display: none;
+  }
+}
+
+.visibleFromTab {
+  display: none;
+
+  @media screen and (min-width: $small-device) {
+    display: block;
+  }
+}

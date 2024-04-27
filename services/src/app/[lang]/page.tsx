@@ -29,13 +29,29 @@ export default async function Home({ params: { lang } }: Props) {
           <div className={styles.text}>
             <h1>{dictionary.home.introTextHeader}</h1>
             <p>{dictionary.home.introText}</p>
+            <div className="visibleFromTab">
+              <CreateTask lang={lang} />
+            </div>
+            <CustomLink
+              className={`${styles.goToAdsButton} visibleFromTab`}
+              href="/ads"
+              lang={lang}
+            >
+              {dictionary.home.lookAtAds}
+            </CustomLink>
           </div>
           <div className={styles.sectionIntroImage}>
             <Image src="/images/homepage/home-page-intro.png" alt="logo" fill />
           </div>
         </section>
-        <CreateTask lang={lang} />
-        <CustomLink className={styles.goToAdsButton} href="/ads" lang={lang}>
+        <section className="mobileOnly">
+          <CreateTask lang={lang} />
+        </section>
+        <CustomLink
+          className={`${styles.goToAdsButton} mobileOnly`}
+          href="/ads"
+          lang={lang}
+        >
           {dictionary.home.lookAtAds}
         </CustomLink>
         <p>{dictionary.home.text1}</p>

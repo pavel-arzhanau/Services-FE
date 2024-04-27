@@ -68,6 +68,20 @@
   font-size: 0.9rem;
 }
 
+.sectionImage {
+  width: 100%;
+  max-width: 480px;
+  position: relative;
+  padding-bottom: 48%;
+  margin: 0 auto;
+
+  @media screen and (min-width: $small-device) {
+    padding: 0;
+    width: 480px;
+    height: 230px
+  }
+}
+
 .homeOffer {
   display: grid;
   grid-template-columns: 3fr 2fr;

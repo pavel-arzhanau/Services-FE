@@ -1,16 +1,27 @@
+.header {
+  font-size: 2rem;
+  text-align: center;
+}
+
 .categories {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 30px;
   justify-content: space-between;
+  max-width: 720px;
+
+  @media screen and (min-width: $small-device) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
 
   & h2 {
-    font-size: 1em;
+    font-size: 1rem;
     color: #31456A;
     margin: 0 0 20px;
+    text-wrap: nowrap;
   }
 
   & .subcategories {
@@ -24,5 +35,5 @@
 
 .subcategory a {
   color: #8CA2B7;
-  font-size: 0.75em;
+  font-size: 0.75rem;
 }

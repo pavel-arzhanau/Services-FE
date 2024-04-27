@@ -16,6 +16,9 @@ export default async function Categories({ lang }: Props) {
 
   return (
     <section>
+      <h2 className={`visibleFromTab ${styles.header}`}>
+        {dictionary.home.categories.specializations}
+      </h2>
       <ul className={styles.categories}>
         {categories.map((category: ICategory) => (
           <li key={category.id}>

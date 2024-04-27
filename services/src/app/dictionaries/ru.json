@@ -28,6 +28,7 @@
   },
   "home": {
     "categories": {
+      "specializations": "Специализации",
       "education": "Образование",
       "pets": "Домашние животные",
       "business_services": "Деловые услуги",

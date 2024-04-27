@@ -54,14 +54,10 @@ export default async function Home({ params: { lang } }: Props) {
         >
           {dictionary.home.lookAtAds}
         </CustomLink>
-        <p>{dictionary.home.text1}</p>
-        <Image
-          src="/images/homepage/home-page-2.png"
-          alt="logo"
-          width={296}
-          height={143}
-          style={{ margin: "0 auto" }}
-        />
+        <p style={{ textAlign: "center" }}>{dictionary.home.text1}</p>
+        <div className={styles.sectionImage}>
+          <Image src="/images/homepage/home-page-2.png" alt="logo" fill />
+        </div>
         <Categories lang={lang} />
         <section className={styles.homeOffer}>
           <div>

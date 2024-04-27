@@ -11,10 +11,14 @@
   grid-template-columns: 1fr 1fr;
   gap: 30px;
   justify-content: space-between;
-  max-width: 720px;
+  max-width: 1040px;
 
   @media screen and (min-width: $small-device) {
     grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  @media screen and (min-width: $large-device) {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
 
   & h2 {

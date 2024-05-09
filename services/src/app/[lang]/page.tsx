@@ -97,7 +97,6 @@ export default async function Home({ params: { lang } }: Props) {
           </div>
           <div className={styles.img3}>
             <Image
-              className={styles.createAdImg}
               src="/images/homepage/how-it-works-3.png"
               alt="service"
               fill

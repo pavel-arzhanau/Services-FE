@@ -1,0 +1,98 @@
+.footerWrapper {
+  width: 100%;
+  background-color: #4097E3;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  color: #fff;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px 10px 0;
+  gap: 10px;
+
+  @media screen and (min-width: $medium-device) {
+    padding: 40px 20px 0;
+  }
+}
+
+.flexContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  @media screen and (min-width: $small-device) {
+    height: 162px;
+    flex-wrap: wrap;
+  }
+
+  @media screen and (min-width: $medium-device) {
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: auto;
+    align-items: center;
+    width: 100%;
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  gap: 10px;
+  padding: 0;
+  margin: 0;
+
+  @media screen and (min-width: $medium-device) {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    column-gap: 30px;
+  }
+
+  & a {
+    text-decoration: none;
+    color: #fff;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+  
+    &:hover {
+      color: #9ECDF6
+    }
+  }
+}
+
+.iconsBlock {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+
+  @media screen and (min-width: $small-device) {
+    grid-area: 2 / 3 / 2 / 3;
+  }
+
+  & .icon {
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+  
+    &:hover {
+      color: #9ECDF6
+    }
+  }
+}
+
+
+
+.languageBlock {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #fff;
+}
+
+.basement {
+  display: flex;
+  gap: 30px;
+}
